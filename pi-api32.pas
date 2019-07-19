@@ -1,9 +1,8 @@
-unit Piapi32;
+unit pi-api32;
 
 {Cross reference api declaration from }
-{Visual Basic PIAPI32.BAS TO Delphi unit PIAPI32.PAS}
-{Donator : Mike Noordermeer }
-{Maintained by : Stephane Gagnon / October 2003}
+{Visual Basic PIAPI32.BAS TO Delphi unit pi-api32.pas}
+{Donator : Mike Noordermeer in year 2003}
 
 interface
 
@@ -58,10 +57,10 @@ const
   GETFIRST = 0;
   GETNEXT = 1;
   GETSAME = 2;
-  PI_NOMOREVALUES = 100;    // Added by Stephane Gagnon 2003.10.15
-  PI_M_AFLAG = 1;           // Added by Stephane Gagnon 2003.10.15
-  PI_M_QFLAG = 2;           // Added by Stephane Gagnon 2003.10.15
-  PI_M_SFLAG = 4;           // Added by Stephane Gagnon 2003.10.15
+  PI_NOMOREVALUES = 100;   
+  PI_M_AFLAG = 1;           
+  PI_M_QFLAG = 2;           
+  PI_M_SFLAG = 4;           
   MAX_POINT_NUM_LEN = 16;
   MAX_NODENAME_LEN = 30;
   MAX_TAGNAME_LEN = 256;
@@ -69,10 +68,10 @@ const
   PILOGIN_SERVER_TYPE_PI = 1000;
 
   //-------------------------------- extended API definitions
-  ARCflag_time = 4;          // Added by Stephane Gagnon 2003.10.15
+  ARCflag_time = 4;          
   ARCFLAG_EVEN = 8;
-  ARCflag_filter = 16;       // Added by Stephane Gagnon 2003.10.15
-  ARCflag_mark = 32;         // Added by Stephane Gagnon 2003.10.15
+  ARCflag_filter = 16;       
+  ARCflag_mark = 32;         
   ARCFLAG_COMP = 64;
   PI_Type_null = 0;
   PI_Type_bool = 1;
@@ -89,29 +88,29 @@ const
   PI_Type_float32 = 12;
   PI_Type_float64 = 13;
   PI_Type_PI2 = 14;
-//  PI_Type_PIobject = 100;      Remove by Stephane Gagnon 2003.10.15
+//  PI_Type_PIobject = 100;      
   PI_Type_digital = 101;
   PI_Type_blob = 102;
-//  PI_Type_PIvalue = 103;       Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PItimestamp = 104;   Remove by Stephane Gagnon 2003.10.15
+//  PI_Type_PIvalue = 103;       
+//  PI_Type_PItimestamp = 104;   
   PI_Type_PIstring = 105;
-//  PI_Type_PIpoint = 106;       Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIstatus = 107;      Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PInametable = 108;   Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIstrlist = 109;     Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIptclasses = 110;   Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIevent = 111;       Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIeventlst = 112;    Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIint16array = 113;  Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIint32array = 114;  Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIfloat32array = 115;Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIvaluearray = 116;  Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIstrtable = 117;    Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIusertoken = 118;   Remove by Stephane Gagnon 2003.10.15
-//  PI_Type_PIeventswid = 119;   Remove by Stephane Gagnon 2003.10.15
+//  PI_Type_PIpoint = 106;       
+//  PI_Type_PIstatus = 107;      
+//  PI_Type_PInametable = 108;   
+//  PI_Type_PIstrlist = 109;     
+//  PI_Type_PIptclasses = 110;   
+//  PI_Type_PIevent = 111;       
+//  PI_Type_PIeventlst = 112;    
+//  PI_Type_PIint16array = 113;  
+//  PI_Type_PIint32array = 114;  
+//  PI_Type_PIfloat32array = 115;
+//  PI_Type_PIvaluearray = 116;  
+//  PI_Type_PIstrtable = 117;    
+//  PI_Type_PIusertoken = 118;   
+//  PI_Type_PIeventswid = 119;   
   PI_Type_bad = 255;
 
-// piar_putarcvaluesx defines    // Added by Stephane Gagnon 2003.10.15
+// piar_putarcvaluesx defines
   ARCNOREPLACE = 3;   //' add unless event(s) exist at same time (PI 2.x)
   ARCAPPEND = 4;      //' add event regardless of existing events
   ARCREPLACE = 5;     //' add event, replace if event at same time
@@ -133,13 +132,13 @@ type
   QERRORS = record
     syserror: Longint;
     numpterrs: Longint;
-    qerr: Array[0..MAXPI3PUTSNAP] of QERROR; // Update by Stephane Gagnon 2003.10.15
+    qerr: Array[0..MAXPI3PUTSNAP] of QERROR; 
   end;
 
-  PI_VAL = record             // Added by Stephane Gagnon 2003.10.15
-    bSize: Longint;           // Added by Stephane Gagnon 2003.10.15
-    iStat: Longint;           // Added by Stephane Gagnon 2003.10.15
-    Flags: Smallint;          // Added by Stephane Gagnon 2003.10.15
+  PI_VAL = record             
+    bSize: Longint;           
+    iStat: Longint;           
+    Flags: Smallint;          
   end;
 
   PI_EXCEPT = record
@@ -171,7 +170,7 @@ type
     day: Longint;       // 1-31
     hour: Longint;      // 0-23
     minute: Longint;    // 0-59
-    tzinfo: Longint;    // Update by Stephane Gagnon 2003.10.15
+    tzinfo: Longint;    // 
     second: Double;     // 0-59.99999999....
   end;
 
