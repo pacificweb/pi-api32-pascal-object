@@ -2,7 +2,7 @@ unit pi-api32;
 
 {Cross reference api declaration from }
 {Visual Basic PIAPI32.BAS TO Delphi unit pi-api32.pas}
-{Donator : Mike Noordermeer in year 2003}
+{Donate to me by programmer Mike Noordermeer in 2003}
 
 interface
 
@@ -194,7 +194,8 @@ Function pilg_getservername(nodeid: Longint; servernamebuf: PChar; bufsize: Long
 Function pilg_login(hwndparent: Integer; username, servername, password: PChar; valid: Longint): Longint; stdcall; external 'pilog32.dll';
 Function pilg_pointattdlg(hwndparent: Integer; taglst: TAGLIST): Longint; stdcall; external 'pilog32.dll';
 Function pilg_registerapp(dllname: PChar): Longint; stdcall; external 'pilog32.dll';
-// The function below requires allocating a linked list which is not supported in VB '
+
+// The function below requires allocating a linked list which is not supported in VB 
 // Declare Function pilg_registerhelp(helpfile: PChar; linklist: Longint): Longint; far; external 'pilog32.dll';
 Function pilg_setservernode(servername: PChar): Longint; stdcall; external 'pilog32.dll';
 Function pilg_tagsearchdlg(hwndparent: Integer): Longint; stdcall; external 'pilog32.dll';
@@ -219,10 +220,8 @@ Function piar_value(pt:Longint; timedate: Pointer; mode: Longint; rval, istat: P
 Function piel_addevnt(pitime, number, group, etype: Longint; msg: PChar; timeout: Longint): Longint; stdcall; external 'piapi32.dll';
 Function piel_evntactn(pitime, number, group, etype, slen: Longint; msg: PChar; action, timeout: Longint): Longint; stdcall; external 'piapi32.dll';
 
-// New : (SG) 20031015
 Function pilg_checklogfile(action:Longint; LogFile: PChar):LongInt; stdcall; external 'piapi32.dll';
 Function pilg_formputlog(Msg, idString:Pchar):Longint; stdcall; external 'piapi32.dll';
-// ...End New
 
 Function pilg_puthomelog(msg: PChar): Longint; stdcall; external 'piapi32.dll';
 Function pilg_putlog(msg: PChar): Longint; stdcall; external 'piapi32.dll';
@@ -262,9 +261,7 @@ Function pipt_tagpreferred(pt: Longint; tag: PChar; slen: Longint): Longint; std
 Function pipt_totalspecs(pt, totalcode: Longint; convers: Single): Longint; stdcall; external 'piapi32.dll';
 Function pipt_typicalvalue(pt: Longint; typicalvalue: Single): Longint; stdcall; external 'piapi32.dll';
 Function pipt_updates(pt: Longint; tagname: PChar; slen, mode: Longint): Longint; stdcall; external 'piapi32.dll';
-// New  (SG) 20031015
 Function pipt_userattribs(pt, userint1, userint2: Longint; userreal1, userreal2: Single): Longint; stdcall; external 'papi32.dll';
-// ...End New
 Function pipt_wildcardsearch(tagmask: PChar; direction, found: Longint; tagname: PChar; slen, pt, numfound: Longint): Longint; stdcall; external 'piapi32.dll';
 Function pisn_evmdisestablish(count, pts: Longint): Longint; stdcall; external 'piapi32.dll';
 Function pisn_evmestablish(count, pts: Longint): Longint; stdcall; external 'piapi32.dll';
@@ -275,9 +272,7 @@ Function pisn_putsnapshot(pt: Longint; rval: Single; istat, timedate: Longint): 
 Function pisn_putsnapshots(pt: Longint; rval: Single; istat, timedate, piapierror, count: Longint): Longint; stdcall; external 'piapi32.dll';
 Function pisn_sendexcepstruc(pt: Longint; pttype: SmallInt; piexcept: PI_EXCEPT; count: Longint): Longint; stdcall; external 'piapi32.dll';
 Function pisn_sendexceptions(pt: Longint; pttype: SmallInt; oldval: Single; oldstat: SmallInt; oldtime: Longint; prevval: Single; prevstat: SmallInt; prevtime: Longint; newval: Single; newstat: SmallInt; newtime: Longint; excdeveng: Single; excmin, excmax: SmallInt; count: Longint): Longint; stdcall; external 'piapi32.dll';
-// New  (SG) 20031015
 Function pipt_sendexcepstrucq(pt:Longint; pttype: Smallint; piexcept: PI_EXCEPT; count: Longint; queueing: Smallint; numbpterrs: Longint; qErrs: QERROR): Longint; stdcall; external 'papi32.dll';
-// ...End New
 
 // ----- these functions have return types incompatible with Visual Basic
 // Function pisn_sendexceptionq(pt: Longint; pttype; oldval: Single; oldstat: SmallInt; oldtime: Longint; prevval: Single; prevstat: SmallInt; prevtime: Longint; newval: Single; newstat: SmallInt; newtime: Longint; excdeveng: Single; excmin; excmax: SmallInt; count: Longint): QERRORS
@@ -294,27 +289,19 @@ Function pitm_syncwithservertime: Longint; stdcall; external 'piapi32.dll';
 Function pitm_systime: Longint; stdcall; external 'piapi32.dll';
 Function piut_connect(procname: PChar): Longint; stdcall; external 'piapi32.dll';
 Function piut_disconnect: Longint; stdcall; external 'piapi32.dll';
-// New  (SG) 20031015
 Function piut_disconnectnode(SrvName: PChar): Longint; stdcall; external 'piapi32.dll';
 Function piut_fastserverversion(MinorVer: Longint; buildid: PChar; BuildLen: Longint): Longint; stdcall; external 'piapi32.dll';
-// ...End New
 Function piut_getapiversion(version: PChar; slen: Longint): Longint; stdcall; external 'piapi32.dll';
-// New (SG)
 Function piut_getloginuser: PChar; stdcall; external 'piapi32.dll';
-// End New
 
-// Remove by (SG) Function piut_getprofile(section, entry, pidefault, buf: PChar; retsize: Longint; pifile: PChar): Longint; stdcall; external 'piapi32.dll';
+Function piut_getprofile(section, entry, pidefault, buf: PChar; retsize: Longint; pifile: PChar): Longint; stdcall; external 'piapi32.dll';
 Procedure piut_getprotocolvers(vers: PChar; slen: Longint); stdcall; external 'piapi32.dll';
-// New (SG)
 Function piut_getserverversion(NodeID: Longint; ServerName: PChar; servernamelen: Longint; version: Smallint; versionlen: longint; buidid:Smallint; buildidlen: Longint): Longint ; stdcall; external 'piapi32.dll';
-// End new.
 Procedure piut_inceventcounter(counter, count: Longint); stdcall; external 'piapi32.dll';
 Function piut_ishome: Longint; stdcall; external 'piapi32.dll';
 Function piut_login(username, password: PChar; valid: Pointer): Longint; stdcall; external 'piapi32.dll';
 Function piut_netinfo(namestr: PChar; namelen: Longint; addressstr: PChar; addresslen: Longint; typestr: PChar; typelen: Longint): Longint; stdcall; external 'piapi32.dll';
-// New (SG)
 Function piut_netnodeinfo(namestr: PChar; namelen: Longint; adressstr: PChar;adresslen: Longint; connected: Smallint) : Longint; stdcall; external 'piapi32.dll';
-// End New
 Function piut_netserverinfo(namestr: PChar; namelen: Longint; addressstr: PChar; addresslen, connected: Longint): Longint; stdcall; external 'piapi32.dll';
 Function piut_setdefaultservernode(servername: PChar): Longint; stdcall; external 'piapi32.dll';
 Procedure piut_setprocname(procname: PChar); stdcall; external 'piapi32.dll';
@@ -323,51 +310,29 @@ Function piut_setservernode(servername: PChar): Longint; stdcall; external 'piap
 Procedure piut_zeroeventcounter(counter: Longint); stdcall; external 'piapi32.dll';
 
 Function piar_getarcvaluesx(ptnum, arcmode, count: Longint; drval: Double; ival: Longint; bval: PChar; bsize, istat: Longint; flags: SmallInt; time0, time1: PITimeStamp; funccode: Longint): Longint; stdcall; external 'piapi32.dll';
-//New
 Function piar_getarcvaluesfilterx(ptnum,mode,count: Longint; drval: Variant; ival:Longint; bval : Variant; bsize,istat: Longint;flags: Smallint; time0, time1: PITimeStamp; expr: PChar; funccode: Longint): Longint; stdcall; external 'piapi32.dll';
-// ...
 Function piar_getarcvaluex(ptnum, arcmode: Longint; drval, ival: Longint; bval: PChar; bsize, istat: Longint; flags: SmallInt; time0: PITimeStamp): Longint; stdcall; external 'piapi32.dll';
-// New
 Function piar_putarcvaluesx(count,mode,ptnum: Longint; drval: Variant; ival: Longint; bval: Variant; bsize,istat: Longint; flags: Smallint; time0: PITimeStamp; errors: Longint): Longint; stdcall; external 'piapi32.dll';
 Function piar_putarcvaluex (ptnum,mode: Longint; drval: Variant; ival: Longint; bval: Variant; bsize,istat: Longint; flags: Smallint; time0: PITimeStamp): Longint; stdcall; external 'piapi32.dll';
-// ...
 Function pipt_pointtypex(ptnum, typex: Longint): Longint; stdcall; external 'piapi32.dll';
-// New
 Function pisn_evmexceptx(count, ptnum, typex: Longint; val: Variant; istat: Longint; flags: Smallint; timeval: PITimeStamp;funccode: Longint): Longint; stdcall; external 'piapi32.dll';
 Function pisn_flushputsnapqx(numbpterrs:Longint; qerrs: QERROR): Longint; stdcall; external 'piapi32.dll';
-//
 Function pisn_getsnapshotsx(ptnum, cntptnum: Longint; drval, ival: Longint; bval: PChar; bsize, istat: Longint; flags: SmallInt; time0: PITimeStamp; lerror, funccode: Longint): Longint; stdcall; external 'piapi32.dll';
 Function pisn_getsnapshotx(ptnum: Longint; drval, ival: Longint; bval: PChar; bsize, istat: Longint; flags: SmallInt; time0: PITimeStamp): Longint; stdcall; external 'piapi32.dll';
-// New
 Function pisn_putsnapshotqx(ptnum: Longint; drval: Variant; ival: Longint; bval: Variant; bsize: Longint; istat: Longint; flags: Smallint; TimeStamp: PITimeStamp; queueing, numbpterrs: Longint; qerrs: QERROR): Longint; stdcall; external 'piapi32.dll';
-// ...
-// pisn_putsnapshotsx takes a pointer to an array of PChar pointers which can't be generated in VB
+// NOTE : pisn_putsnapshotsx takes a pointer to an array of PChar pointers which can''t be generated in VB
 Function pisn_putsnapshotsx(count, ptnum: Longint; drval, ival: Longint; bval: PChar; bsize, istat: Longint; flags: SmallInt; time0: PChar; errors: Longint): Longint; stdcall; external 'piapi32.dll';
 Function pisn_putsnapshotx(ptnum: Longint; drval, ival: Longint; bval: PChar; bsize, istat: Longint; flags: SmallInt; time0: Pointer): Longint; stdcall; external 'piapi32.dll';
-
-// New
 Function pisn_sendexceptqx( pt,typex: Longint; oldval: Variant; oldistat: Longint; oldflags: Smallint; oldtime: PITimeStamp; prevval: Variant; previstat: Longint; prevflags: Smallint; prevtime: PITimeStamp; val: Variant; istat: Longint; flags: Smallint; newtime: PITimeStamp; ExcDevEng,excmin,excmax: Double; count, queueing, numbpterrs: Longint; qerrs: QERROR): Longint; stdcall; external 'piapi32.dll';
-//
-
 Function pitm_getpitime(time0: PITimeStamp; frac: Double): Longint; stdcall; external 'piapi32.dll';
-// New
 Function pitm_isdst(time0: PITimeStamp) : Longint; stdcall; external 'piapi32.dll';
-// ...
 Procedure pitm_setcurtime(time0: PITimeStamp; incl_subsec: SmallInt); stdcall; external 'piapi32.dll';
-// New
 Procedure pitm_setdst(time0: PITimeStamp; tm_isdst: Longint); stdcall; external 'piapi32.dll';
 Function pitm_setpitime(time0: PITimeStamp; pitime: Longint; frac: Double): Longint; stdcall; external 'piapi32.dll';
 Function pitm_settime(time0: PITimeStamp; xyear, xmonth, xday, xhour, xminute: Longint; xsecond: Double): Longint; stdcall; external 'piapi32.dll';
-
-// New
 Function piut_errormsg(stat: Longint; msg: PChar; msglen: Longint): Longint; stdcall; external 'piapi32.dll';
-//...
-
 Function piut_setpassword(username, oldpw, newpw: PChar): Longint; stdcall; external 'piapi32.dll';
-
-// New
 Function piut_strerror(stat: Longint; msg: PChar; msglen: Longint; srcstr: PChar): Longint; stdcall; external 'piapi32.dll';
-//...
 
 implementation
 
